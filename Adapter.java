@@ -1,6 +1,12 @@
 
 public class Adapter {
     public static void main(String[] args) {
+        Well well = new DogWell();
+        well.makeEcho("Hey");
+        System.out.println("Water: "+well.getWater());
+        well = new VeilWisBucket();
+        well.makeEcho("Uu");
+        System.out.println("Water: "+well.getWater());
 
     }
 }
@@ -34,16 +40,20 @@ class Bucket{
     }
 }
 
-class VeilWisBacket implements Well{
+class VeilWisBucket implements Well{
 
     private Bucket bucket = new Bucket();
 
+
     @Override
     public double getWater() {
-        return 0;
+        bucket.feel();
+        bucket.emptying();
+        return bucket.value;
     }
 
     @Override
     public void makeEcho(String call) {
+        System.out.println(call+"-"+call+call);
     }
 }
